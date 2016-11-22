@@ -1,0 +1,22 @@
+@import "../variables";
+
+.p-img-toggle-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  right: 0;
+  height: 100%;
+  transition: 500ms;
+  border-radius: 0 3px 3px 0;
+
+  &:hover {
+    background-color: $primary-lighter;
+  }
+
+  .arrow {
+    width: 14px;
+    height: 14px;
+  }
+}
