@@ -23,13 +23,8 @@ export class VkButton extends React.Component {
   render() {
     return (
       <div className="content">
-
         {this.state.text}
-
-        <div className="p-img-contaier">
-          <PImg/>
-        </div>
-
+        <PImg/>
       </div>
     );
   }
