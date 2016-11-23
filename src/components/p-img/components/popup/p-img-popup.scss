@@ -5,6 +5,8 @@
 .p-img-popup {
   display: none;
   font-family: -apple-system, BlinkMacSystemFont, Roboto, Open Sans, Helvetica Neue, sans-serif;
+  //good solution for hide is here (but we have to add class fadeOut on mouseLeave):
+  //http://stackoverflow.com/questions/30064932/hide-element-after-fade-out-using-only-css
   animation: fadeInFromNone 0.5s ease-out;
   font-size: 12.5px;
   color: $dark-gray;
