@@ -14,6 +14,7 @@ export class VkButton extends React.Component {
 
     this.state = { text: props.text };
     this.assignRootButtonClass(props.root, pImgSettings.ROOT_BUTTON_SELECTOR);
+    this.overrideDefaultVKOnclick(props.root, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
   }
 
   // -------------------------------------------------------------------------
@@ -22,7 +23,7 @@ export class VkButton extends React.Component {
 
   render() {
     return (
-      <div className="content">
+      <div className={pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR}>
         {this.state.text}
         <PImgComponent/>
       </div>
@@ -39,6 +40,22 @@ export class VkButton extends React.Component {
    */
   assignRootButtonClass(rootBtn, className) {
     rootBtn.classList += ` ${className}`;
+  }
+
+  /**
+   * Overrides default vk onclick event
+   * @param rootBtn
+   * @param className
+   */
+  overrideDefaultVKOnclick(rootBtn, className) {
+    let onclick = rootBtn.onclick;
+    rootBtn.onclick = (e) => {
+      if (e.currentTarget === e.target || e.target.classList.contains(className)) {
+        return onclick(e);
+      } else {
+        return false;
+      }
+    }
   }
 
 }

@@ -24,16 +24,16 @@
 </div>
 
 <script>
-  var parent = document.getElementById('div1');
-  var child = document.getElementById('btn1');
+  let parent = document.getElementById('div1');
+  let child = document.getElementById('btn1');
 
-  function removeBtn1(){
+  function removeBtn1() {
     parent.removeChild(child);
     console.info('btn1 deleted');
   }
 
   //default vk behaviour
-  function sendMes(){
+  function sendMes() {
     alert('VK event');
   }
 </script>
