@@ -1,4 +1,4 @@
-@import "../colors";
+@import "./colors";
 
 $primary: $react-dark-gray;
 $primary-lighter: lighten($primary, 20%);

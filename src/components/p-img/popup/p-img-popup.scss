@@ -1,15 +1,18 @@
-@import "../variables";
+@import "../../variables";
+@import "../../colors";
 
 .p-img-popup {
   //display: none;
   color: $dark-gray;
   position: absolute;
   width: 350px;
-  bottom: 26px;
+  bottom: 16px;
   right: -30px;
   z-index: 200;
   cursor: default;
   animation: fadeInFromNone 0.5s ease-out;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Open Sans, Helvetica Neue, sans-serif;
+  font-size: 12.5px;
 
   .primary-container {
     border: 1px solid $vk-blue;
@@ -31,20 +34,6 @@
 
     .header-title {
       font-size: 14px;
-    }
-
-    .close-icon {
-      position: absolute;
-      right: 10px;
-      cursor: pointer;
-      /* It does not working in some chrome versions: */
-      //display: inline-flex;
-      /* Instead of it: */
-      top: 7px;
-
-      &:hover {
-        font-weight: bold;
-      }
     }
   }
 

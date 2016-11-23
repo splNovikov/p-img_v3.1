@@ -25,7 +25,6 @@ export class PImgPopup extends React.Component {
 
           <div className="popup-header">
             <div className="header-title">Paste images to chat</div>
-            <div className="close-icon">&#x2716;</div>
           </div>
 
           <div className="popup-tabs-container">

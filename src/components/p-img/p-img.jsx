@@ -1,8 +1,10 @@
 import React from 'react';
-import arrow from './arrow.svg';
-import './toggle-popup-button.scss';
 
-export class TogglePopupButton extends React.Component {
+import {PImgPopup} from './popup';
+import {PopupToggle} from './popup-toggle';
+import './p-img.scss';
+
+export class PImg extends React.Component {
 
   // -------------------------------------------------------------------------
   // Mounting
@@ -18,13 +20,20 @@ export class TogglePopupButton extends React.Component {
 
   render() {
     return (
-      <div className="p-img-toggle-container">
-        <img src={arrow} className="arrow" alt="arrow"/>
+      <div className="p-img">
+        <PImgPopup/>
+        <PopupToggle/>
       </div>
     );
   }
+
+  // -------------------------------------------------------------------------
+  // Private Functions
+  // -------------------------------------------------------------------------
+
+
 }
 
-TogglePopupButton.propTypes = {};
+PImg.propTypes = {};
 
-export default TogglePopupButton;
+export default PImg;

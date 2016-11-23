@@ -1,10 +1,7 @@
 import React from 'react';
-import {TogglePopupButton} from './toggle-popup-button';
-import {PImgPopup} from './p-img-popup';
-
-import './vk-button.scss';
-
 import {pImgSettings} from '../../constants'
+import {PImg} from '../';
+import './vk-button.scss';
 
 export class VkButton extends React.Component {
 
@@ -24,26 +21,17 @@ export class VkButton extends React.Component {
   // -------------------------------------------------------------------------
 
   render() {
-    // const togglePopupButton = this.renderTogglePopupButton();
-
     return (
       <div className="content">
-        <PImgPopup/>
 
-        <div className="root-context-wrapper">
-          {this.state.text}
+        {this.state.text}
+
+        <div className="p-img-contaier">
+          <PImg/>
         </div>
 
-        <TogglePopupButton/>
       </div>
     );
-  }
-
-  // -------------------------------------------------------------------------
-  // Unmounting
-  // -------------------------------------------------------------------------
-
-  componentWillUnmount() {
   }
 
   // -------------------------------------------------------------------------
@@ -51,19 +39,12 @@ export class VkButton extends React.Component {
   // -------------------------------------------------------------------------
 
   /**
-   *
    * @param rootBtn
    * @param className String
    */
   assignRootButtonClass(rootBtn, className) {
     rootBtn.classList += ` ${className}`;
   }
-
-  // renderTogglePopupButton() {
-  //   return (
-  //     <TogglePopupButton/>
-  //   );
-  // }
 
 }
 
