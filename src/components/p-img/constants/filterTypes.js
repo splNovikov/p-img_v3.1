@@ -1,0 +1,2 @@
+export const SHOW_IMAGES = 'SHOW_IMAGES';
+export const SHOW_GIF_IMAGES = 'SHOW_GIF_IMAGES';

@@ -1,5 +1,5 @@
 import {VkButton} from './vk-button';
-import {PImg} from './p-img';
+import {PImgComponent} from './p-img';
 
 
-export {VkButton, PImg};
+export {VkButton, PImgComponent};

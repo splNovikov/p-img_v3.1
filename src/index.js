@@ -5,6 +5,6 @@ utils.polling();
 // todo temporary:
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {PImg} from './components';
+import {PImgComponent} from './components';
 
-ReactDOM.render(<PImg/>, document.getElementById('forPImg'));
+ReactDOM.render(<PImgComponent/>, document.getElementById('forPImg'));

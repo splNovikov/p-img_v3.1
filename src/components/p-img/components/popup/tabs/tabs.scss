@@ -1,0 +1,27 @@
+@import "../../../../colors";
+
+.popup-tabs-container {
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  color: $vk-gray;
+  margin: 20px 20px 0;
+  border-bottom: 1px solid $vk-light-gray;
+
+  .tab {
+    padding: 0 20px 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
+
+    &.active {
+      border-bottom-color: $vk-blue2;
+    }
+
+    &:hover:not(.active) {
+      border-bottom-color: $vk-light-gray2;
+    }
+  }
+}

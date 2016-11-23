@@ -1,4 +1,6 @@
 import React from 'react';
+
+import {Tabs} from './tabs'
 import './p-img-popup.scss';
 
 export class PImgPopup extends React.Component {
@@ -27,16 +29,7 @@ export class PImgPopup extends React.Component {
             <div className="header-title">Paste images to chat</div>
           </div>
 
-          <div className="popup-tabs-container">
-            {/*${activeTab === TabsEnum.Gifs ? 'active' : ''}*/}
-            <div className="tab">
-              Gifs
-            </div>
-            {/*${activeTab === TabsEnum.Images ? 'active' : ''}*/}
-            <div className="tab">
-              Images
-            </div>
-          </div>
+          <Tabs/>
 
           <div className="images-container">
             {/*${images.map(image => `*/}
@@ -46,7 +39,7 @@ export class PImgPopup extends React.Component {
             {/*`).join('')}*/}
           </div>
 
-        </div>{/*primary-container*/}
+        </div>
 
         <div className="triangle-down-wrapper">
           <div className="triangle-down"></div>

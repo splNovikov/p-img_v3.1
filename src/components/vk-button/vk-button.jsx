@@ -1,6 +1,6 @@
 import React from 'react';
 import {pImgSettings} from '../../constants'
-import {PImg} from '../';
+import {PImgComponent} from '../';
 import './vk-button.scss';
 
 export class VkButton extends React.Component {
@@ -24,7 +24,7 @@ export class VkButton extends React.Component {
     return (
       <div className="content">
         {this.state.text}
-        <PImg/>
+        <PImgComponent/>
       </div>
     );
   }
