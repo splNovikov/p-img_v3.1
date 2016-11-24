@@ -1,15 +1,17 @@
 import React from 'react';
-import FilterTab from './filterTab';
+import FilterTab from './filter-tab';
+import {filterTypes} from '../../../constants';
 import './tabs.scss';
+
 
 export const Tabs = () => {
   return (
     <div className="popup-tabs-container">
-      <FilterTab filter='SHOW_IMAGES'>
+      <FilterTab filter={filterTypes.SHOW_IMAGES}>
         Images
       </FilterTab>
 
-      <FilterTab filter='SHOW_GIF_IMAGES'>
+      <FilterTab filter={filterTypes.SHOW_GIF_IMAGES}>
         Gifs
       </FilterTab>
     </div>

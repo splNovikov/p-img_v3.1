@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {VkButton} from '../components';
-import {pImgSettings} from '../constants'
+import {pImgSettings} from '../constants';
 
 export const injector = {
   makeHtmlInjection,
@@ -17,6 +17,7 @@ export const injector = {
  */
 function makeHtmlInjection(notInjectedButtons) {
   let btn = notInjectedButtons[0];
+
   ReactDOM.render(<VkButton text={btn.textContent}
                             root={btn}/>, btn);
 

@@ -1,0 +1,20 @@
+.images-container {
+  $margin: 5px;
+  margin: $margin 0 $margin 10px;
+  overflow: auto;
+  white-space: normal;
+  height: 190px - $margin * 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .image-wrapper {
+    display: inline-block;
+    cursor: pointer;
+
+    img {
+      max-width: 100px;
+      width: 100px;
+    }
+  }
+}

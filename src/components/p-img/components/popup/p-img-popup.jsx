@@ -1,19 +1,10 @@
 import React from 'react';
 
-import {Tabs} from './tabs'
+import {Tabs} from './tabs';
+import {VisibleImagesList} from './images';
 import './p-img-popup.scss';
 
 export class PImgPopup extends React.Component {
-
-  // -------------------------------------------------------------------------
-  // Mounting
-  // -------------------------------------------------------------------------
-
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
 
   // -------------------------------------------------------------------------
   // Updating
@@ -31,13 +22,7 @@ export class PImgPopup extends React.Component {
 
           <Tabs/>
 
-          <div className="images-container">
-            {/*${images.map(image => `*/}
-            {/*<div class="image-wrapper">*/}
-            {/*<img src="${image.path}" alt="${image.title}" title="${image.title}"/>*/}
-            {/*</div>*/}
-            {/*`).join('')}*/}
-          </div>
+          <VisibleImagesList />
 
         </div>
 

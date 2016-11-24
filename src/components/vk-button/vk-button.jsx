@@ -1,6 +1,6 @@
 import React from 'react';
 import {pImgSettings} from '../../constants'
-import {PImgComponent} from '../';
+import PImgComponent from '../p-img';
 import './vk-button.scss';
 
 export class VkButton extends React.Component {
@@ -12,7 +12,10 @@ export class VkButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { text: props.text };
+    this.state = {
+      text: props.text
+    };
+
     this.assignRootButtonClass(props.root, pImgSettings.ROOT_BUTTON_SELECTOR);
     this.overrideDefaultVKOnclick(props.root, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
   }

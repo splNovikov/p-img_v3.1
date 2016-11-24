@@ -1,3 +1,3 @@
 import {VkButton} from './vk-button';
 
-export {VkButton};
+export default VkButton;
