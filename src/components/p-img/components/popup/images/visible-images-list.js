@@ -22,12 +22,13 @@ const getVisibleImages = (images, filter) => {
   }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     images: getVisibleImages(
       state.images,
       state.visibilityFilter
-    )
+    ),
+    ...props
   };
 };
 

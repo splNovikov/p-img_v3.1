@@ -3,9 +3,9 @@ import {PImgPopup} from './components/popup';
 import {PopupToggle} from './components/popup-toggle';
 import './p-img.scss';
 
-export const PImg = () => (
+export const PImg = ({onImageClick}) => (
   <div className="p-img">
-    <PImgPopup/>
+    <PImgPopup onImageClick={onImageClick}/>
     <PopupToggle/>
   </div>
 );

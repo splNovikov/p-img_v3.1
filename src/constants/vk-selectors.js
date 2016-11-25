@@ -1,5 +1,5 @@
-export const SEND_BUTTONS = `button._im_send,
-                             button.addpost_button`;
+// button._im_send,
+export const SEND_BUTTONS = `button.addpost_button`;
 
 export const IM_EDITABLE  = `div.im_editable, 
                              div.im-chat-input--text, 

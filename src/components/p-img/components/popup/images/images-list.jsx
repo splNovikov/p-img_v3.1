@@ -1,20 +1,16 @@
 import React from 'react';
+import Image from './image';
 import './images.scss';
 
-export const ImagesList = ({ images }) => {
+const ImagesList = ({ images, onImageClick }) => {
   return (
     <div className="images-container">
       {images.map(image =>
-        <div className="image-wrapper"
-             key={image.path}>
-          <img src={image.path} alt={image.title} title={image.title}/>
-        </div>)}
+        <Image key={image.path}
+               image={image}
+               onImageClick={onImageClick}/>)}
     </div>
   );
-};
-
-ImagesList.propTypes = {
-  images: React.PropTypes.array.isRequired
 };
 
 export default ImagesList;

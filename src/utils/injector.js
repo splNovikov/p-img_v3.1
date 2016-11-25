@@ -11,17 +11,18 @@ export const injector = {
 
 /**
  * Main injection function. It Injects to all buttons new html
- * @param notInjectedButtons {Array}
+ * @param buttonsWithContentEditable {Array}
  * @public
  * @returns {*}
  */
-function makeHtmlInjection(notInjectedButtons) {
-  let btn = notInjectedButtons[0];
+function makeHtmlInjection(buttonsWithContentEditable) {
+  let obj = buttonsWithContentEditable[0];
 
-  ReactDOM.render(<VkButton text={btn.textContent}
-                            root={btn}/>, btn);
+  ReactDOM.render(<VkButton text={obj.button.textContent}
+                            root={obj.button}
+                            editable={obj.contentEditable}/>, obj.button);
 
-  let slicedArray = notInjectedButtons.slice(1);
+  let slicedArray = buttonsWithContentEditable.slice(1);
   if (slicedArray.length !== 0) {
     return makeHtmlInjection(slicedArray);
   }

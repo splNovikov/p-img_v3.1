@@ -21,7 +21,8 @@ export const polling = (ms) => {
     // if found - setPolling to Long and make injection to the new buttons
     if (notInjectedButtons.length !== 0) {
       restartPolling(polling, pollingSettings.LONG_POLLING_MS);
-      injector.makeHtmlInjection(notInjectedButtons);
+      let buttonsWithContentEditable = generateButtonsWithContentEditable(notInjectedButtons);
+      injector.makeHtmlInjection(buttonsWithContentEditable);
     }
   }, ms);
 };
@@ -39,4 +40,15 @@ function restartPolling(polling, newPollingMs) {
 
   clearInterval(polling.interval);
   polling(newPollingMs);
+}
+
+/**
+ * Generates array of adapted objects
+ * @param buttons {Array}
+ */
+function generateButtonsWithContentEditable(buttons) {
+  return buttons.map(button => {
+    let contentEditable = finder.getImEditableForEl(button, selectors.IM_EDITABLE, 3);
+    return { button, contentEditable };
+  });
 }

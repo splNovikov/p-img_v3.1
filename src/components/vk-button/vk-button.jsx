@@ -13,7 +13,8 @@ export class VkButton extends React.Component {
     super(props);
 
     this.state = {
-      text: props.text
+      text: props.text,
+      editable: props.editable
     };
 
     this.assignRootButtonClass(props.root, pImgSettings.ROOT_BUTTON_SELECTOR);
@@ -28,7 +29,7 @@ export class VkButton extends React.Component {
     return (
       <div className={pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR}>
         {this.state.text}
-        <PImgComponent/>
+        <PImgComponent editable={this.state.editable}/>
       </div>
     );
   }
@@ -65,7 +66,8 @@ export class VkButton extends React.Component {
 
 VkButton.propTypes = {
   text: React.PropTypes.string.isRequired,
-  root: React.PropTypes.object.isRequired
+  root: React.PropTypes.object.isRequired,
+  editable: React.PropTypes.object.isRequired
 };
 
 export default VkButton;
