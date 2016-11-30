@@ -14,11 +14,14 @@ export class VkButton extends React.Component {
 
     this.state = {
       text: props.text,
-      editable: props.editable
+      editable: props.editable,
+      root: props.root
     };
+  }
 
-    this.assignRootButtonClass(props.root, pImgSettings.ROOT_BUTTON_SELECTOR);
-    this.overrideDefaultVKOnclick(props.root, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
+  componentDidMount(){
+    this.assignRootButtonClass(this.state.root, pImgSettings.ROOT_BUTTON_SELECTOR);
+    this.overrideDefaultVKOnclick(this.state.root, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
   }
 
   // -------------------------------------------------------------------------
@@ -52,14 +55,20 @@ export class VkButton extends React.Component {
    * @param className
    */
   overrideDefaultVKOnclick(rootBtn, className) {
-    let onclick = rootBtn.onclick;
-    rootBtn.onclick = (e) => {
-      if (e.currentTarget === e.target || e.target.classList.contains(className)) {
-        return onclick(e);
-      } else {
+    // let onclick = rootBtn.onclick;
+    // rootBtn.onclick = (e) => {
+    //   if (e.currentTarget === e.target || e.target.classList.contains(className)) {
+    //     return onclick ? onclick(e): false;
+    //   } else {
+    //     return false;
+    //   }
+    // };
+
+    rootBtn.addEventListener('mousedown', function (e) {
+      if (e.currentTarget !== e.target && !e.target.classList.contains(className)) {
         return false;
       }
-    }
+    })
   }
 
 }

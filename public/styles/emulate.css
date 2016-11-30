@@ -1,15 +1,15 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-}
+/*body {*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*flex-direction: column;*/
+    /*height: 100vh;*/
+    /*margin: 0;*/
+/*}*/
 
-.small-div {
-    width: 400px;
-    padding: 5px;
-    height: 85px;
-    border: 1px dashed darkslategray;
-}
+/*.small-div {*/
+    /*width: 400px;*/
+    /*padding: 5px;*/
+    /*height: 85px;*/
+    /*border: 1px dashed darkslategray;*/
+/*}*/
