@@ -1,29 +1,24 @@
 import {finder} from './finder';
 import {injector} from './injector';
-import {selectors, pollingSettings} from '../constants';
+import {pollingSettings} from '../constants';
 
 export const polling = (ms) => {
   polling.currentMs = ms || pollingSettings.SHORT_POLLING_MS;
 
   polling.interval = setInterval(function () {
     // find all send buttons
-    let sendBtnArr = finder.findButtons(selectors.SEND_BUTTONS);
+    let newRootObjects = finder.getNewRootObjects();
 
     // if there are no any button -> restart polling
-    if (sendBtnArr.length === 0) {
+    if (newRootObjects.length === 0) {
       restartPolling(polling, pollingSettings.SHORT_POLLING_MS);
       return;
-    }
-
-    // Find not injected
-    let notInjectedButtons = injector.filterInjectedButtons(sendBtnArr, false);
-
-    // if found - setPolling to Long and make injection to the new buttons
-    if (notInjectedButtons.length !== 0) {
+    } else {
+      injector.makeHtmlInjection(newRootObjects);
+      // when we found - setPolling to Long and make injection to the new buttons
       restartPolling(polling, pollingSettings.LONG_POLLING_MS);
-      let buttonsWithContentEditable = generateButtonsWithContentEditable(notInjectedButtons);
-      injector.makeHtmlInjection(buttonsWithContentEditable);
     }
+
   }, ms);
 };
 
@@ -33,6 +28,7 @@ export const polling = (ms) => {
  * @param newPollingMs {int}
  * @private
  */
+
 function restartPolling(polling, newPollingMs) {
   if (polling.currentMs === newPollingMs) {
     return;
@@ -40,15 +36,4 @@ function restartPolling(polling, newPollingMs) {
 
   clearInterval(polling.interval);
   polling(newPollingMs);
-}
-
-/**
- * Generates array of adapted objects
- * @param buttons {Array}
- */
-function generateButtonsWithContentEditable(buttons) {
-  return buttons.map(button => {
-    let contentEditable = finder.getImEditableForEl(button, selectors.IM_EDITABLE, 3);
-    return { button, contentEditable };
-  });
 }

@@ -55,15 +55,14 @@
                                         <div class="reply_form">
                                           <input type="hidden" id="reply_to4308777_1714" value="">
                                           <div class="post_field_user">
-                                            <a class="post_field_user_link" href="/novikov_pa"
-                                               onclick="return nav.go(this, event)" wotsearchprocessed="true">
+                                            <a class="post_field_user_link" href="#" wotsearchprocessed="true">
                                               <img class="post_field_user_image"
                                                    src="https://pp.vk.me/c628219/v628219777/1faaf/sK_BrVeuFcg.jpg">
                                             </a>
                                           </div>
                                           <div class="reply_field_wrap _emoji_field_wrap">
                                             <div id="reply_field4308777_1714" class="reply_field submit_post_field"
-                                                 onfocus="return Wall.showEditReply('4308777_1714', event);"
+                                                 onfocus="wallShowEditReply(event);"
                                                  contenteditable="true"></div>
                                             <div class="placeholder">
                                               <div class="ph_input">
@@ -158,8 +157,10 @@
     console.info('vk wall post event');
   }
 
-  function cancelEvent() {
+  function cancelEvent(e) {
     console.info('vk cancel event');
+    debugger;
+    e.stopPropagation();
   }
 
   function onButtonMouseover() {
@@ -170,7 +171,9 @@
     console.log('vk mouse out event');
   }
 
-
+  function wallShowEditReply() {
+    console.log('vk on focus event');
+  }
 
 </script>
 

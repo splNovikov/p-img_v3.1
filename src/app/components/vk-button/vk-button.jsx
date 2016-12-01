@@ -13,15 +13,13 @@ export class VkButton extends React.Component {
     super(props);
 
     this.state = {
-      text: props.text,
-      editable: props.editable,
-      root: props.root
+      rootObject: props.rootObject
     };
   }
 
   componentDidMount(){
-    this.assignRootButtonClass(this.state.root, pImgSettings.ROOT_BUTTON_SELECTOR);
-    this.overrideDefaultVKOnclick(this.state.root, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
+    this.assignRootButtonClass(this.state.rootObject.button, pImgSettings.ROOT_BUTTON_SELECTOR);
+    // this.overrideDefaultVKOnclick(this.state.rootObject.button, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
   }
 
   // -------------------------------------------------------------------------
@@ -31,7 +29,7 @@ export class VkButton extends React.Component {
   render() {
     return (
       <div className={pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR}>
-        {this.state.text}
+        {this.state.rootObject.button.textContent}
         <PImgComponent editable={this.state.editable}/>
       </div>
     );
@@ -49,34 +47,21 @@ export class VkButton extends React.Component {
     rootBtn.classList += ` ${className}`;
   }
 
-  /**
-   * Overrides default vk onclick event
-   * @param rootBtn
-   * @param className
-   */
-  overrideDefaultVKOnclick(rootBtn, className) {
-    // let onclick = rootBtn.onclick;
-    // rootBtn.onclick = (e) => {
-    //   if (e.currentTarget === e.target || e.target.classList.contains(className)) {
-    //     return onclick ? onclick(e): false;
-    //   } else {
-    //     return false;
-    //   }
-    // };
-
-    rootBtn.addEventListener('mousedown', function (e) {
-      if (e.currentTarget !== e.target && !e.target.classList.contains(className)) {
-        return false;
-      }
-    })
-  }
+  // overrideDefaultVKOnclick(rootBtn, className) {
+  //   let onclick = rootBtn.onclick;
+  //   rootBtn.onclick = (e) => {
+  //     if (e.currentTarget === e.target || e.target.classList.contains(className)) {
+  //       return onclick ? onclick(e): false;
+  //     } else {
+  //       return false;
+  //     }
+  //   };
+  // }
 
 }
 
 VkButton.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  root: React.PropTypes.object.isRequired,
-  editable: React.PropTypes.object.isRequired
+  rootObject: React.PropTypes.object.isRequired
 };
 
 export default VkButton;
