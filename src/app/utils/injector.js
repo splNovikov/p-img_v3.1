@@ -1,10 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import {VkButton} from '../components';
-
 export const injector = {
-  makeHtmlInjection
+  inject
 };
 
 /**
@@ -13,13 +8,13 @@ export const injector = {
  * @public
  * @returns {*}
  */
-function makeHtmlInjection(rootObjects) {
+function inject(rootObjects) {
   let rootObject = rootObjects[0];
-
-  ReactDOM.render(<VkButton rootObject={rootObject}/>, rootObject.button);
+  rootObject.selfInject();
 
   let slicedArray = rootObjects.slice(1);
   if (slicedArray.length !== 0) {
-    return makeHtmlInjection(slicedArray);
+    return inject(slicedArray);
   }
 }
+

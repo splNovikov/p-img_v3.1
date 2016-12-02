@@ -3,7 +3,6 @@ import FilterTab from './filter-tab';
 import {filterTypes} from '../../../constants';
 import './tabs.scss';
 
-
 export const Tabs = () => {
   return (
     <div className="popup-tabs-container">

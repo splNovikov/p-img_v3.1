@@ -1,5 +1,5 @@
 import React from 'react';
-import {pImgSettings} from '../../constants'
+import vkButtonSelectors from './vk-button-selectors'
 import PImgComponent from '../p-img';
 import './vk-button.scss';
 
@@ -13,13 +13,14 @@ export class VkButton extends React.Component {
     super(props);
 
     this.state = {
-      rootObject: props.rootObject
+      rootButton: props.rootButton,
+      rootEditable: props.rootEditable
     };
   }
 
   componentDidMount(){
-    this.assignRootButtonClass(this.state.rootObject.button, pImgSettings.ROOT_BUTTON_SELECTOR);
-    // this.overrideDefaultVKOnclick(this.state.rootObject.button, pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR);
+    this.assignRootButtonClass(this.state.rootButton, vkButtonSelectors.ROOT_BUTTON_SELECTOR);
+    this.overrideDefaultVKOnclick(this.state.rootButton, vkButtonSelectors.ROOT_BUTTON_CONTENT_SELECTOR);
   }
 
   // -------------------------------------------------------------------------
@@ -28,9 +29,9 @@ export class VkButton extends React.Component {
 
   render() {
     return (
-      <div className={pImgSettings.ROOT_BUTTON_CONTENT_SELECTOR}>
-        {this.state.rootObject.button.textContent}
-        <PImgComponent editable={this.state.editable}/>
+      <div className={vkButtonSelectors.ROOT_BUTTON_CONTENT_SELECTOR}>
+        {this.state.rootButton.textContent}
+        <PImgComponent editable={this.state.rootEditable}/>
       </div>
     );
   }
@@ -39,29 +40,31 @@ export class VkButton extends React.Component {
   // Private Functions
   // -------------------------------------------------------------------------
 
+  overrideDefaultVKOnclick(rootBtn, className) {
+    let onclick = rootBtn.onclick;
+    rootBtn.onclick = (e) => {
+      if (e.currentTarget === e.target || e.target.classList.contains(className)) {
+        return onclick ? onclick(e): false;
+      } else {
+        return false;
+      }
+    };
+  }
+
   /**
    * @param rootBtn
    * @param className String
+   * @private
    */
   assignRootButtonClass(rootBtn, className) {
     rootBtn.classList += ` ${className}`;
   }
 
-  // overrideDefaultVKOnclick(rootBtn, className) {
-  //   let onclick = rootBtn.onclick;
-  //   rootBtn.onclick = (e) => {
-  //     if (e.currentTarget === e.target || e.target.classList.contains(className)) {
-  //       return onclick ? onclick(e): false;
-  //     } else {
-  //       return false;
-  //     }
-  //   };
-  // }
-
 }
 
 VkButton.propTypes = {
-  rootObject: React.PropTypes.object.isRequired
+  rootButton: React.PropTypes.object.isRequired,
+  rootEditable: React.PropTypes.object.isRequired
 };
 
 export default VkButton;

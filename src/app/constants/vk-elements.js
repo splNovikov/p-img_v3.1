@@ -12,14 +12,14 @@ export const VK_ELEMENTS = {
     // This is the main box, contained all child elements.
     // On this box should be onclick with stopPropagation which we should cancel.
     boxSelectors: ['reply_box', 'submit_post_box', '_submit_post_box'],
-    contentEditableSelectors: `div.reply_field, div.submit_post_field`,
+    contentEditableSelectors: 'div.reply_field, div.submit_post_field',
     // should be inly one selector here.
     // because we are using adding pseudo-selector :not in finder.js
     buttonSelector: 'button.addpost_button'
   },
   smthElse: {
-    boxSelectors: `div.abrakadabra`,
-    contentEditableSelectors: `div.abrakadabra`,
+    boxSelectors: ['abrakadabra'],
+    contentEditableSelectors: 'abrakadabra',
     buttonSelector: 'button.abrakadabra'
   }
 };

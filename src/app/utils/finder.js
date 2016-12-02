@@ -1,9 +1,10 @@
 import {VK_ELEMENTS as vkElements} from '../constants';
 import {pImgSettings} from '../constants';
-import RootObject from './root-object';
+import RootObject from './RootObject';
 
 export const finder = {
-  getNewRootObjects
+  getNewRootObjects,
+  getParentWithClass
 };
 
 function getNewRootObjects() {
@@ -21,15 +22,22 @@ function getNewRootObjects() {
 }
 
 function findButtonsInMarkup(el) {
-  return document.querySelectorAll(`${el.buttonSelector}:not(.${pImgSettings.ROOT_BUTTON_SELECTOR})`);
+  return document.querySelectorAll(`${el.buttonSelector}:not(.${pImgSettings.ROOT_BUTTON_INJECTED_SELECTOR})`);
 }
 
+/**
+ *
+ * @param buttons
+ * @param elementType
+ * @returns {Array<RootObject>}
+ */
 function createRootObjectsByButtons(buttons, elementType) {
   let res = [];
 
   for (let button of buttons) {
     let box = getParentWithClass(button, elementType.boxSelectors);
-    res.push(new RootObject(elementType, button, box));
+    let editable = box.querySelector(elementType.contentEditableSelectors);
+    res.push(new RootObject(elementType, button, box, editable));
   }
 
   return res;
@@ -46,6 +54,5 @@ function getParentWithClass(element, classList) {
     return getParentWithClass(element.parentNode, classList);
   }
 
-  window.console.error(`p-img: element with criteria ${JSON.stringify(classList)} not found`);
   return null;
 }

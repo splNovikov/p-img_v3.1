@@ -1,0 +1,1 @@
+export const P_IMG = 'p-img';
