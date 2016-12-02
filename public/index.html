@@ -51,7 +51,7 @@
                                     <div class="reply_box_inner_wrap">
                                       <div id="reply_box4308777_1714"
                                            class="submit_post_box reply_box clear_fix _submit_post_box"
-                                           onclick="cancelEvent(event)">
+                                           onclick="return cancelEvent(event)">
                                         <div class="reply_form">
                                           <input type="hidden" id="reply_to4308777_1714" value="">
                                           <div class="post_field_user">
@@ -159,7 +159,6 @@
 
   function cancelEvent(e) {
     console.info('vk cancel event');
-    debugger;
     e.stopPropagation();
   }
 

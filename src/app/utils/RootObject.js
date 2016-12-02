@@ -30,10 +30,7 @@ export default class RootObject {
     // 1. Mark button as injected - to prevent further injection:
     this._assignRootButtonClass(this.button, pImgSettings.ROOT_BUTTON_INJECTED_SELECTOR);
 
-    // 2.
-    this._overrideBoxBehaviour(this.box);
-
-    // 3. Injection to button. Comment it if don't need to.
+    // 2. Injection to button. Comment it if don't need to.
     ReactDOM.render(<VkButton rootButton={this.button}
                               rootEditable={this.editable}/>, this.button);
   }
@@ -49,20 +46,6 @@ export default class RootObject {
    */
   _assignRootButtonClass(rootBtn, className) {
     rootBtn.classList += ` ${className}`;
-  }
-
-  /**
-   * @param box
-   * @private
-   */
-  _overrideBoxBehaviour(box) {
-    let oldOnclick = box.onclick;
-
-    box.onclick = (e) => {
-      if (!finder.getParentWithClass(e.target, pImgComponentSelectors.P_IMG)) {
-        oldOnclick(e);
-      }
-    };
   }
 
 }
