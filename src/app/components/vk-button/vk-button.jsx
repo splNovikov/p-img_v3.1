@@ -18,9 +18,10 @@ export class VkButton extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this.assignRootButtonClass(this.state.rootButton, vkButtonSelectors.ROOT_BUTTON_SELECTOR);
-    this.overrideDefaultVKOnclick(this.state.rootButton, vkButtonSelectors.ROOT_BUTTON_CONTENT_SELECTOR);
+  componentDidMount() {
+    this._assignRootButtonClass(this.state.rootButton, vkButtonSelectors.ROOT_BUTTON_SELECTOR);
+
+    this.refs.btnContent.addEventListener('click', this._cancelEvent);
   }
 
   // -------------------------------------------------------------------------
@@ -29,7 +30,8 @@ export class VkButton extends React.Component {
 
   render() {
     return (
-      <div className={vkButtonSelectors.ROOT_BUTTON_CONTENT_SELECTOR}>
+      <div className={vkButtonSelectors.ROOT_BUTTON_CONTENT_SELECTOR}
+           ref="btnContent">
         {this.state.rootButton.textContent}
         <PImgComponent editable={this.state.rootEditable}/>
       </div>
@@ -37,27 +39,33 @@ export class VkButton extends React.Component {
   }
 
   // -------------------------------------------------------------------------
-  // Private Functions
+  // Unmounting
   // -------------------------------------------------------------------------
 
-  overrideDefaultVKOnclick(rootBtn, className) {
-    let onclick = rootBtn.onclick;
-    rootBtn.onclick = (e) => {
-      if (e.currentTarget === e.target || e.target.classList.contains(className)) {
-        return onclick ? onclick(e): false;
-      } else {
-        return false;
-      }
-    };
+  componentWillUnmount(){
+    this.refs.btnContent.removeEventListener('click', this._cancelEvent);
   }
+
+  // -------------------------------------------------------------------------
+  // Private Functions
+  // -------------------------------------------------------------------------
 
   /**
    * @param rootBtn
    * @param className String
    * @private
    */
-  assignRootButtonClass(rootBtn, className) {
+  _assignRootButtonClass(rootBtn, className) {
     rootBtn.classList += ` ${className}`;
+  }
+
+  /**
+   * stop propagation
+   * @param e
+   * @private
+   */
+  _cancelEvent(e){
+    e.stopPropagation();
   }
 
 }

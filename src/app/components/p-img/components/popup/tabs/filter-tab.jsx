@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import { setVisibilityFilter } from '../../../actions';
+import {connect} from 'react-redux';
+import {setVisibilityFilter} from '../../../actions';
 import Tab from './tab';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,8 +10,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () =>
+    onClick: (e) => {
+      e.stopPropagation();
       dispatch(setVisibilityFilter(ownProps.filter))
+    }
   };
 };
 
