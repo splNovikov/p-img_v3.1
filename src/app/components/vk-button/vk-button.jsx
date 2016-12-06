@@ -22,6 +22,7 @@ export class VkButton extends React.Component {
     this._assignRootButtonClass(this.state.rootButton, vkButtonSelectors.ROOT_BUTTON_SELECTOR);
 
     this.refs.btnContent.addEventListener('click', this._cancelEvent);
+    this.refs.btnContent.addEventListener('mouseover', this._cancelEvent);
   }
 
   // -------------------------------------------------------------------------
@@ -44,6 +45,7 @@ export class VkButton extends React.Component {
 
   componentWillUnmount(){
     this.refs.btnContent.removeEventListener('click', this._cancelEvent);
+    this.refs.btnContent.removeEventListener('mouseover', this._cancelEvent);
   }
 
   // -------------------------------------------------------------------------
