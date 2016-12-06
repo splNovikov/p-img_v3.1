@@ -1,17 +1,14 @@
-import {VK_ELEMENTS as vkElements} from '../constants';
-import {pImgSettings} from '../constants';
-import RootObject from './RootObject';
+import {rootObjectTypes, pImgSettings} from '../constants';
 
 export const finder = {
-  getNewRootObjects,
-  getParentWithClass
+  getNewRootObjects
 };
 
 function getNewRootObjects() {
   let res = [];
-  for (let i in vkElements) {
-    if (vkElements.hasOwnProperty(i)) {
-      let elementType = vkElements[i];
+  for (let i in rootObjectTypes) {
+    if (rootObjectTypes.hasOwnProperty(i)) {
+      let elementType = rootObjectTypes[i];
       let foundButtons = findButtonsInMarkup(elementType);
       let rootObjects = createRootObjectsByButtons(foundButtons, elementType);
       res = [...res, ...rootObjects];
@@ -37,7 +34,8 @@ function createRootObjectsByButtons(buttons, elementType) {
   for (let button of buttons) {
     let box = getParentWithClass(button, elementType.boxSelectors);
     let editable = box.querySelector(elementType.contentEditableSelectors);
-    res.push(new RootObject(elementType, button, box, editable));
+
+    res.push(new elementType.constructor(elementType, button, box, editable));
   }
 
   return res;

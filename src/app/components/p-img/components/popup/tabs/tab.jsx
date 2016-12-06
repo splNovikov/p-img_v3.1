@@ -27,8 +27,10 @@ export class Tab extends React.Component {
   // Updating
   // -------------------------------------------------------------------------
 
-  componentWillReceiveProps(nextProps){
-    this.state.active = nextProps.active;
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      active: nextProps.active
+    });
   }
 
   render() {
@@ -44,7 +46,7 @@ export class Tab extends React.Component {
   // Unmounting
   // -------------------------------------------------------------------------
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.refs.tab.removeEventListener('click', this.state.onClick);
   }
 }

@@ -10,7 +10,7 @@ export const polling = (ms) => {
     let newRootObjects = finder.getNewRootObjects();
 
     // if there are no any button -> restart polling
-    // todo: to think it over: do we realy need two types of polling?
+    // todo: to think it over: do we really need two types of polling?
     if (newRootObjects.length === 0) {
       restartPolling(polling, pollingSettings.SHORT_POLLING_MS);
     } else {

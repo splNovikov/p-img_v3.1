@@ -2,18 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {VkButton} from '../components';
-import {pImgComponentSelectors} from '../components/p-img/constants';
 import {pImgSettings} from '../constants';
-
-import {finder} from './finder';
 
 export default class RootObject {
 
   // -------------------------------------------------------------------------
   // Constructor
   // -------------------------------------------------------------------------
-
-  // TODO: make this class Parent for types wallPost and some other
 
   constructor(elementType, button, box, editable) {
     this.elementType = elementType;

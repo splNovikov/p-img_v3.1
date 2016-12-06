@@ -4,9 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  z-index: 210;
 
   .arrow {
-    cursor: pointer;
     font-size: 20px;
   }
 }

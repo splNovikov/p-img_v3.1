@@ -1,6 +1,8 @@
 .p-img {
   position: relative;
-  width: 28px;
+  width: 22px;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     .p-img-popup {

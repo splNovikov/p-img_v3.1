@@ -1,5 +1,5 @@
-import {VK_ELEMENTS}        from './vk-elements';
+import {rootObjectTypes}    from './root-object-types';
 import * as pollingSettings from './polling-settings';
 import * as pImgSettings    from './p-img-selectors';
 
-export { VK_ELEMENTS, pollingSettings, pImgSettings};
+export { rootObjectTypes, pollingSettings, pImgSettings};
