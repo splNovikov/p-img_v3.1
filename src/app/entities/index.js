@@ -1,5 +1,6 @@
 import WallPost from './WallPost';
+import Chat from './Chat';
 
-export { WallPost };
+export { WallPost, Chat };
 
 

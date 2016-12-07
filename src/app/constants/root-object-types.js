@@ -1,4 +1,4 @@
-import {WallPost} from '../entities';
+import {WallPost, Chat} from '../entities';
 
 export const rootObjectTypes = {
 
@@ -15,10 +15,12 @@ export const rootObjectTypes = {
     buttonSelector: 'button.addpost_button'
   },
 
-  smthElse: {
-    boxSelectors: ['abrakadabra'],
-    contentEditableSelectors: 'abrakadabra',
-    mediaIconsContainer: 'div.abrakadabra',
-    buttonSelector: 'button.abrakadabra'
+  chat: {
+    constructor: Chat,
+
+    boxSelectors: ['im-page--chat-input', '_im_chat_input_w'],
+    contentEditableSelectors: 'div.im_editable, div.im-chat-input--text, div._im_text',
+    mediaIconsContainer: 'div.im-chat-input--txt-wrap',
+    buttonSelector: 'button.im-send-btn'
   }
 };

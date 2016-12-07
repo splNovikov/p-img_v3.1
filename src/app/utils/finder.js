@@ -33,8 +33,7 @@ function createRootObjectsByButtons(buttons, elementType) {
 
   for (let button of buttons) {
     let box = getParentWithClass(button, elementType.boxSelectors);
-    let editable = box.querySelector(elementType.contentEditableSelectors);
-
+    let editable = box.querySelector(elementType.contentEditableSelectors);;
     res.push(new elementType.constructor(elementType, button, box, editable));
   }
 

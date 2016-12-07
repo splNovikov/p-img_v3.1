@@ -15,7 +15,7 @@ gulp.buildSettings = {
 
 
 gulp.task('build extension', function () {
-  plugins.runSequence('clean', ['misc', 'html'], 'copyBackgroundJS', 'copyAppJS', 'rename', 'zipPublish' /*, 'clean'*/);
+  plugins.runSequence('clean', ['misc', 'html'], 'copyBackgroundJS', 'copyAppJS', 'rename', 'zipPublish' , 'clean');
 });
 
 gulp.task('clean', function () {
