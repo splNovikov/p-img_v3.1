@@ -1,13 +1,14 @@
-// import * as actionTypes from '../constants/actionTypes';
+ import {actionTypes} from '../constants';
 
 // imagesList reducer
-const imagesList = (state = [], action) => {
-  switch (action.type) {
-    // case (actionTypes.ADD_IMAGE):
-    //   return [
-    //     ...state,
-    //     imageReducer(null, action)
-    //   ];
+const imagesList = (state = [], payload) => {
+  switch (payload.type) {
+    case (actionTypes.ADD_IMAGE):
+      return [
+        ...state,
+        // todo: imageReducer(null, action)
+        payload.image
+      ];
     default:
       return state;
   }

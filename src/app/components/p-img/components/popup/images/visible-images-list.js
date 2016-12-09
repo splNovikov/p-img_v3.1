@@ -32,9 +32,13 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   // todo stay it here for future implementation
-  return {};
+  return {
+    // onDeleteClick: (path) => {
+    //   dispatch(deleteImage(path));
+    // }
+  };
 };
 
 const VisibleImagesList = connect(

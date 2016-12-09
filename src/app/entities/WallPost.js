@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {PImgComponent} from '../components'
+import {PImgComponent} from '../components';
+// import {VkButton} from '../components';
 import RootObject from './RootObject';
 
 export default class WallPost extends RootObject {
@@ -13,6 +14,12 @@ export default class WallPost extends RootObject {
   selfInject() {
     super.selfInject();
 
+    // 1. Injection to button. Comment it if don't need to.
+    // remove it - if you don't want to.
+    // ReactDOM.render(<VkButton rootButton={this.button}
+    //                           rootEditable={this.editable}/>, this.button);
+
+    // 2. Inject to icons container
     let vkMediaIconsContainer = this.box.querySelector(this.elementType.mediaIconsContainer);
 
     if (!vkMediaIconsContainer) {
@@ -30,7 +37,6 @@ export default class WallPost extends RootObject {
 
     ReactDOM.render(<PImgComponent editable={this.editable}/>, node);
     vkMediaIconsContainer.append(node);
-
   }
 
 }

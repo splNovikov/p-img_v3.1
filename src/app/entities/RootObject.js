@@ -1,7 +1,3 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import {VkButton} from '../components';
-
 import {pImgSettings} from '../constants';
 
 export default class RootObject {
@@ -22,12 +18,8 @@ export default class RootObject {
   // -------------------------------------------------------------------------
 
   selfInject() {
-    // 1. Mark button as injected - to prevent further injection:
+    // Mark button as injected - to prevent further injection:
     this._assignRootButtonClass(this.button, pImgSettings.ROOT_BUTTON_INJECTED_SELECTOR);
-
-    // 2. Injection to button. Comment it if don't need to.
-    // ReactDOM.render(<VkButton rootButton={this.button}
-    //                           rootEditable={this.editable}/>, this.button);
   }
 
   // -------------------------------------------------------------------------

@@ -4,6 +4,13 @@
 
 import {actionTypes} from '../constants';
 
+export const addImage = (image) => {
+  return {
+    type: actionTypes.ADD_IMAGE,
+    image
+  };
+};
+
 export const setVisibilityFilter = (filter) => {
   return {
     type: actionTypes.SET_VISIBILITY_FILTER,

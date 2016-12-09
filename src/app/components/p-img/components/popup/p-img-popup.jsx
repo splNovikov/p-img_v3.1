@@ -1,6 +1,7 @@
 import React from 'react';
 import {Tabs} from './tabs';
 import {VisibleImagesList} from './images';
+import {AddInput} from './add-input';
 import './p-img-popup.scss';
 
 export const PImgPopup = ({ onImageClick }) => {
@@ -16,6 +17,8 @@ export const PImgPopup = ({ onImageClick }) => {
         <Tabs/>
 
         <VisibleImagesList onImageClick={onImageClick}/>
+
+        <AddInput/>
 
       </div>
 

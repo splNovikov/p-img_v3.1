@@ -1,0 +1,28 @@
+@import "../../../../colors";
+
+.add-form {
+  border-top: 1px solid $vk-blue;
+  height: 34px;
+  display: flex;
+
+  $button-width: 30px;
+
+  .add-input {
+    border: none;
+    width: calc(100% - #{$button-width});
+    padding: 0 10px;
+  }
+
+  .add-button {
+    width: $button-width;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    font-size: 18px;
+    color: $vk-gray2;
+
+    &:hover{
+      color: $vk-gray;
+    }
+  }
+}
