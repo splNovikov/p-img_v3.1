@@ -4,9 +4,10 @@ import {PopupToggle} from './components/popup-toggle';
 import {pImgComponentSelectors} from './constants';
 import './p-img.scss';
 
-export const PImg = ({onImageClick}) => (
+export const PImg = ({onImageClick, updateStorage}) => (
   <div className={pImgComponentSelectors.P_IMG}>
-    <PImgPopup onImageClick={onImageClick}/>
+    <PImgPopup onImageClick={onImageClick}
+               updateStorage={updateStorage}/>
     <PopupToggle/>
   </div>
 );

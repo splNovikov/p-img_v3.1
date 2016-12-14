@@ -1,13 +1,10 @@
-/**
- * Created by Novikov on 3/2/2016.
- */
-
 import {actionTypes} from '../constants';
 
-export const addImage = (image) => {
+export const addImage = (path, title) => {
   return {
     type: actionTypes.ADD_IMAGE,
-    image
+    path,
+    title
   };
 };
 

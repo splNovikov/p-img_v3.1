@@ -1,7 +1,7 @@
 import {storeSettings, defaultImages} from '../constants';
 
-const setData = (namespace, images) => {
-  localStorage.setItem(namespace, JSON.stringify(images));
+const setData = (images) => {
+  localStorage.setItem(storeSettings.STORE_SETTINGS_NAMESPACE, JSON.stringify(images));
 };
 
 
@@ -9,10 +9,14 @@ const getData = () => {
   const store = localStorage.getItem(storeSettings.STORE_SETTINGS_NAMESPACE);
 
   if (!store) {
-    setData(storeSettings.STORE_SETTINGS_NAMESPACE, defaultImages);
+    setData(defaultImages);
   }
 
   return (store && JSON.parse(store)) || defaultImages;
 };
 
-export {setData, getData};
+export const imagesStore = {
+  setData: setData,
+  getData: getData
+};
+

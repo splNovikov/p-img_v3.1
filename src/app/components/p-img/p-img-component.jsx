@@ -1,8 +1,10 @@
 import React from 'react';
 import {Provider} from 'react-redux';
+
 import {PImg} from './p-img';
 import configureStore from './store/configure-store';
 import {utils} from '../../utils';
+import {imagesStore} from './store/images-store';
 
 export class PImgComponent extends React.Component {
 
@@ -16,8 +18,10 @@ export class PImgComponent extends React.Component {
     this.state = {
       editable: props.editable
     };
+    this.store = configureStore();
 
     this.onImageClick = this.onImageClick.bind(this);
+    this.updateStorage = this.updateStorage.bind(this)
   }
 
   // -------------------------------------------------------------------------
@@ -25,11 +29,10 @@ export class PImgComponent extends React.Component {
   // -------------------------------------------------------------------------
 
   render() {
-    const store = configureStore();
-
     return (
-      <Provider store={store}>
-        <PImg onImageClick={this.onImageClick}/>
+      <Provider store={this.store}>
+        <PImg onImageClick={this.onImageClick}
+              updateStorage={this.updateStorage}/>
       </Provider>
     );
   }
@@ -44,6 +47,18 @@ export class PImgComponent extends React.Component {
     }
 
     utils.pasteEmulation(src, this.state.editable);
+  }
+
+  updateStorage(event){
+    event.stopPropagation();
+
+    let state = this.store.getState();
+
+    if (state && state.images){
+      imagesStore.setData(state.images);
+    }
+
+    return state.images;
   }
 }
 

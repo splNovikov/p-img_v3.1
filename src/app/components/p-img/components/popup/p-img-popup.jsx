@@ -4,7 +4,7 @@ import {VisibleImagesList} from './images';
 import {AddInput} from './add-input';
 import './p-img-popup.scss';
 
-export const PImgPopup = ({ onImageClick }) => {
+export const PImgPopup = ({ onImageClick, updateStorage }) => {
   return (
     <div className="p-img-popup">
 
@@ -18,7 +18,7 @@ export const PImgPopup = ({ onImageClick }) => {
 
         <VisibleImagesList onImageClick={onImageClick}/>
 
-        <AddInput/>
+        <AddInput updateStorage={updateStorage}/>
 
       </div>
 

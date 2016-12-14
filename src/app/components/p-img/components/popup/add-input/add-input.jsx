@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {addImage} from '../../../actions';
-import {Image} from '../../../entities';
 import './add-input.scss';
 
 export class AddInput extends React.Component {
@@ -16,6 +15,7 @@ export class AddInput extends React.Component {
 
     this.state = { value: '' };
     this.dispatch = props.dispatch;
+    this.updateStorage = props.updateStorage;
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -70,8 +70,10 @@ export class AddInput extends React.Component {
       return false;
     }
 
-    this.dispatch(addImage( new Image(this.state.value)));
-    // todo add to storage, and say to storage to refresh everywhere
+    this.dispatch(addImage(this.state.value, ''));
+
+    // update Storage
+    this.updateStorage(e);
 
     this.setState({ value: '' });
   }
@@ -79,7 +81,8 @@ export class AddInput extends React.Component {
 }
 
 AddInput.propTypes = {
-  dispatch: React.PropTypes.func.isRequired
+  dispatch: React.PropTypes.func.isRequired,
+  updateStorage: React.PropTypes.func.isRequired
 };
 
 AddInput = connect()(AddInput);
