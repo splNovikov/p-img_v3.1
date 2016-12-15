@@ -18,6 +18,20 @@
   z-index: 200;
   transition: 500ms;
 
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $vk-light-gray2;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $vk-gray2;
+    border-radius: 5px;
+  }
+
   .primary-container {
     border: 1px solid $vk-blue;
     background-color: $white;
