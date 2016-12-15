@@ -19,6 +19,8 @@ const imagesList = (state = [], payload) => {
         ...state,
         imageReducer(null, payload)
       ];
+    case (actionTypes.DELETE_IMAGE):
+      return state.filter(image => image.path !== payload.path);
     default:
       return state;
   }

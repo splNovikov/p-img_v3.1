@@ -16,7 +16,8 @@ export const PImgPopup = ({ onImageClick, updateStorage }) => {
 
         <Tabs/>
 
-        <VisibleImagesList onImageClick={onImageClick}/>
+        <VisibleImagesList onImageClick={onImageClick}
+                           updateStorage={updateStorage}/>
 
         <AddInput updateStorage={updateStorage}/>
 

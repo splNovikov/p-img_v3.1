@@ -21,7 +21,7 @@ export class PImgComponent extends React.Component {
     this.store = configureStore();
 
     this.onImageClick = this.onImageClick.bind(this);
-    this.updateStorage = this.updateStorage.bind(this)
+    this.updateStorage = this.updateStorage.bind(this);
   }
 
   // -------------------------------------------------------------------------

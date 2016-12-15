@@ -1,3 +1,5 @@
+@import "../../../../colors";
+
 .images-container {
   $margin: 5px;
   margin: $margin 0 $margin 10px;
@@ -11,10 +13,36 @@
   .image-wrapper {
     display: inline-block;
     cursor: pointer;
+    position: relative;
 
     img {
       max-width: 100px;
       width: 100px;
+    }
+
+    &:hover{
+      .delete-container{
+        display: flex;
+      }
+    }
+
+    $delete-container-width: 14px;
+    .delete-container {
+      display: none;
+      position: absolute;
+      align-content: center;
+      justify-content: center;
+      right: 0;
+      top: 0;
+      height: $delete-container-width;
+      width: $delete-container-width;
+      background-color: $vk-gray;
+      opacity: .5;
+      color: $vk-light-gray2;
+
+      &:hover{
+        opacity: 1;
+      }
     }
   }
 }

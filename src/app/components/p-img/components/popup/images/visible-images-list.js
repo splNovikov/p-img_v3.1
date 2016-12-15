@@ -1,4 +1,6 @@
 import {connect} from 'react-redux';
+
+import { deleteImage } from '../../../actions';
 import ImagesList from './images-list';
 import {filterTypes} from '../../../constants';
 
@@ -32,12 +34,14 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  // todo stay it here for future implementation
+const mapDispatchToProps = (dispatch, props) => {
   return {
-    // onDeleteClick: (path) => {
-    //   dispatch(deleteImage(path));
-    // }
+    onDeleteClick: (path) => {
+      // remove from state
+      dispatch(deleteImage(path));
+      // remove from storage in PImgComponent;
+      props.updateStorage(event);
+    }
   };
 };
 

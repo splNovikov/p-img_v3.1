@@ -15,3 +15,10 @@ export const setVisibilityFilter = (filter) => {
   };
 };
 
+export const deleteImage = (path) => {
+  return {
+    type: actionTypes.DELETE_IMAGE,
+    path
+  };
+};
+
