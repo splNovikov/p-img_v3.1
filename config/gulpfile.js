@@ -1,5 +1,7 @@
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')({
+'use strict';
+
+let gulp = require('gulp');
+let plugins = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'run-sequence', 'del']
 });
 
@@ -15,7 +17,7 @@ gulp.buildSettings = {
 
 
 gulp.task('build extension', function () {
-  plugins.runSequence('clean', ['misc', 'html'], 'copyBackgroundJS', 'copyAppJS', 'rename', 'zipPublish' /*, 'clean'*/);
+  plugins.runSequence('clean', ['misc', 'html'], 'copyBackgroundJS', 'copyAppJS', 'rename', 'removeUnnecessary', 'zipPublish' /*, 'clean'*/);
 });
 
 gulp.task('clean', function () {
@@ -57,8 +59,16 @@ gulp.task('rename', function () {
     .pipe(gulp.dest(gulp.buildSettings.paths.extensionTmp + '/static/js/'));
 });
 
+
+gulp.task('removeUnnecessary', function () {
+  return plugins.del([
+    gulp.buildSettings.paths.extensionTmp + '/static/js/**.map',
+    gulp.buildSettings.paths.extensionTmp + '/static/js/main.**.js'
+  ], {force: true});
+});
+
 gulp.task('zipPublish', function () {
-  var currentDate = new Date().toJSON().slice(0, 10);
+  let currentDate = new Date().toJSON().slice(0, 10);
   return gulp.src(gulp.buildSettings.paths.extensionTmp + '/**/*')
     .pipe(plugins.zip(gulp.buildSettings.zipName + '_' + currentDate + '.zip'))
     .pipe(gulp.dest(gulp.buildSettings.paths.archives));
