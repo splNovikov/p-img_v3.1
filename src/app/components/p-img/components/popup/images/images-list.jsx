@@ -72,7 +72,13 @@ export class ImagesList extends React.Component {
     let delta = e.deltaY;
     let up = delta < 0;
 
-    if ((!up && delta > scrollHeight - height - scrollTop) || (up && -delta > scrollTop)) {
+    if (!up && delta > scrollHeight - height - scrollTop) {
+      _this.scrollTop = scrollHeight;
+      return e.preventDefault();
+    }
+
+    if (up && -delta > scrollTop) {
+      _this.scrollTop = 0;
       return e.preventDefault();
     }
   }
