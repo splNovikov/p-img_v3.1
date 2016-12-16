@@ -38,7 +38,9 @@ export class Image extends React.Component {
              title={this.state.image.title}
              ref="img"/>
         <div className="delete-container"
-             ref="deleteImg">&#10006;</div>
+             ref="deleteImg">
+          <span className="delete-icon">&#10006;</span>
+        </div>
       </div>
     );
   }

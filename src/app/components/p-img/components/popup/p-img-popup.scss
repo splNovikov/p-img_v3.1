@@ -19,17 +19,13 @@
   transition: 500ms;
 
   ::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: $vk-light-gray2;
-    border-radius: 5px;
+    width: 6px;
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $vk-gray2;
-    border-radius: 5px;
+    background: $vk-light-gray3;
+    border-radius: 6px;
   }
 
   .primary-container {

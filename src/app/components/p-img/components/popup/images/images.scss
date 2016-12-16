@@ -2,7 +2,7 @@
 
 .images-container {
   $margin: 5px;
-  margin: $margin 10px;
+  margin: $margin;
   overflow: auto;
   white-space: normal;
   height: 190px - $margin * 2;
@@ -20,28 +20,38 @@
       width: 100px;
     }
 
-    &:hover{
-      .delete-container{
-        display: flex;
+    &:hover {
+      .delete-container {
+        opacity: 1;
       }
     }
 
-    $delete-container-width: 14px;
+    $delete-container-width: 18px;
     .delete-container {
-      display: none;
+      opacity: 0;
+      transition: opacity 100ms linear;
       position: absolute;
-      align-content: center;
+      display: flex;
       justify-content: center;
       right: 0;
       top: 0;
       height: $delete-container-width;
       width: $delete-container-width;
-      background-color: $vk-gray;
-      opacity: .5;
-      color: $vk-light-gray2;
+      background: $vk-gray3;
+      border-radius: 2px;
+      cursor: pointer;
+      outline: none;
 
-      &:hover{
-        opacity: 1;
+      .delete-icon {
+        transition: opacity 200ms linear;
+        color: $white;
+        opacity: 0.85;
+        display: flex;
+        align-self: center;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
