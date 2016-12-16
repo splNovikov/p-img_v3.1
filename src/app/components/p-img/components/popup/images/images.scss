@@ -26,13 +26,11 @@
       }
     }
 
-    $delete-container-width: 18px;
+    $delete-container-width: 16px;
     .delete-container {
       opacity: 0;
       transition: opacity 100ms linear;
       position: absolute;
-      display: flex;
-      justify-content: center;
       right: 0;
       top: 0;
       height: $delete-container-width;
@@ -41,13 +39,13 @@
       border-radius: 2px;
       cursor: pointer;
       outline: none;
+      text-align: center;
 
       .delete-icon {
+        font-size: 13px;
         transition: opacity 200ms linear;
         color: $white;
         opacity: 0.85;
-        display: flex;
-        align-self: center;
 
         &:hover {
           opacity: 1;
