@@ -69,7 +69,8 @@ export class Image extends React.Component {
 
 Image.propTypes = {
   image: React.PropTypes.object.isRequired,
-  onImageClick: React.PropTypes.func.isRequired
+  onImageClick: React.PropTypes.func.isRequired,
+  onDeleteClick: React.PropTypes.func.isRequired
 };
 
 export default Image;
