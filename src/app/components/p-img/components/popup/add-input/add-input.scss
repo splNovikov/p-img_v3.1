@@ -17,12 +17,16 @@
     width: $button-width;
     border: none;
     background-color: inherit;
-    cursor: pointer;
     font-size: 18px;
     color: $vk-gray2;
 
-    &:hover{
+    &:disabled{
+      color: $vk-light-gray2;
+    }
+
+    &:hover:not(:disabled){
       color: $vk-gray;
+      cursor: pointer;
     }
   }
 }

@@ -6,7 +6,7 @@ import {filterTypes} from '../../../constants';
 
 const isGif = (image) => {
   let extension = image.path.slice(-3);
-  return extension === 'gif' || extension === 'GIF';
+  return extension.toLowerCase() === 'gif';
 };
 
 const getVisibleImages = (images, filter) => {

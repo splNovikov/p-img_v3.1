@@ -13,7 +13,7 @@ export class AddInput extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { value: '' };
+    this.state = { value: '', isValid: false };
     this.dispatch = props.dispatch;
     this.updateStorage = props.updateStorage;
 
@@ -31,8 +31,6 @@ export class AddInput extends React.Component {
   // Updating
   // -------------------------------------------------------------------------
 
-  // todo: validation
-  // todo validation if already exists
   render() {
     return (
       <form className="add-form">
@@ -43,6 +41,7 @@ export class AddInput extends React.Component {
                onChange={this.handleChange}/>
         <input type="submit"
                className="add-button"
+               disabled={!this.state.isValid}
                value="&#10148;"
                ref="submit"
                title="Add new image"/>
@@ -51,7 +50,10 @@ export class AddInput extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({
+      value: event.target.value,
+      isValid: this.validate(event.target.value)
+    });
   }
 
   // -------------------------------------------------------------------------
@@ -62,13 +64,9 @@ export class AddInput extends React.Component {
     this.refs.submit.removeEventListener('click', this.onSubmit);
   }
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-
-    if (!this.state.value.trim()) {
-      return false;
-    }
 
     this.dispatch(addImage(this.state.value, ''));
 
@@ -76,7 +74,17 @@ export class AddInput extends React.Component {
     this.updateStorage(e);
 
     this.setState({ value: '' });
-  }
+  };
+
+  // todo validation if already exists
+  validate = value => {
+    if (value.trim() === '') {
+      return false;
+    }
+
+    let extension = value.slice(-3);
+    return ['gif', 'jpg', 'jpeg'].includes(extension.toLowerCase());
+  };
 
 }
 
