@@ -15,13 +15,8 @@ export class ImagesList extends React.Component {
     this.state = {
       images: props.images
     };
-  }
 
-  /**
-   * We are using addEventListener instead of React's onClick because of React is using synthetic event.
-   */
-  componentDidMount() {
-    this.refs.images.addEventListener('wheel', this._onScroll);
+    this._onScroll = this._onScroll.bind(this);
   }
 
   // -------------------------------------------------------------------------
@@ -37,7 +32,8 @@ export class ImagesList extends React.Component {
   render() {
     return (
       <div className="images-container"
-           ref="images">
+           ref="images"
+           onWheel={this._onScroll}>
         {this.state.images.map(image =>
           <Image key={image.path}
                  image={image}
@@ -45,14 +41,6 @@ export class ImagesList extends React.Component {
                  onDeleteClick={this.props.onDeleteClick}/>)}
       </div>
     );
-  }
-
-  // -------------------------------------------------------------------------
-  // Unmounting
-  // -------------------------------------------------------------------------
-
-  componentWillUnmount() {
-    this.refs.images.removeEventListener('wheel', this._onScroll);
   }
 
   // -------------------------------------------------------------------------
@@ -65,21 +53,48 @@ export class ImagesList extends React.Component {
       return;
     }
 
-    let _this = e.currentTarget;
-    let scrollTop = _this.scrollTop;
-    let scrollHeight = _this.scrollHeight;
-    let height = _this.offsetHeight;
-    let delta = e.deltaY;
-    let up = delta < 0;
-
-    if (!up && delta > scrollHeight - height - scrollTop) {
-      _this.scrollTop = scrollHeight;
+    if (this._smoothCloser.inProgress) {
       return e.preventDefault();
     }
 
-    if (up && -delta > scrollTop) {
-      _this.scrollTop = 0;
+    let target = e.currentTarget;
+    let delta = e.deltaY;
+    let up = delta < 0;
+
+    if ((!up && delta > target.scrollHeight - target.offsetHeight - target.scrollTop) ||
+      (up && -delta > target.scrollTop)) {
+      this._smoothCloser(up, target);
       return e.preventDefault();
+    }
+  }
+
+  _smoothCloser(up, target) {
+    let that = this;
+    let speed = 4; // pixels per ms
+    let ms = 10;
+
+    if (!up) {
+      let interval = setInterval(function () {
+        target.scrollTop += speed;
+        that._smoothCloserIntervalBehaviour(target, interval);
+      }, ms);
+    } else {
+      let interval = setInterval(function () {
+        target.scrollTop -= speed;
+        that._smoothCloserIntervalBehaviour(target, interval);
+      }, ms);
+    }
+
+    return this._smoothCloser.inProgress;
+  }
+
+  _smoothCloserIntervalBehaviour(target, interval) {
+    if (target.scrollTop === this._smoothCloser.memo) {
+      this._smoothCloser.inProgress = false;
+      clearInterval(interval);
+    } else {
+      this._smoothCloser.inProgress = true;
+      this._smoothCloser.memo = target.scrollTop;
     }
   }
 
