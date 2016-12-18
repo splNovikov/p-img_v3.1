@@ -1,9 +1,13 @@
-#page_layout{
+#page_layout {
     display: flex;
     height: 100vh;
     align-items: center;
 }
 
-#page_body{
+#page_body {
     margin: 0;
+}
+
+.p-img-popup {
+    display: block !important;
 }
