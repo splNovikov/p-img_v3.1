@@ -88,7 +88,7 @@ export class ImagesList extends React.Component {
     return this._smoothCloser.inProgress;
   }
 
-  _smoothCloserIntervalBehaviour(target, interval) {
+  _smoothCloserIntervalBehaviour = (target, interval) => {
     if (target.scrollTop === this._smoothCloser.memo) {
       this._smoothCloser.inProgress = false;
       clearInterval(interval);

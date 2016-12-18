@@ -68,7 +68,7 @@ export class AddInput extends React.Component {
     e.stopPropagation();
     e.preventDefault();
 
-    this.dispatch(addImage(this.state.value, ''));
+    this.dispatch(addImage(this.state.value.trim(), ''));
 
     // update Storage
     this.updateStorage(e);
@@ -78,11 +78,13 @@ export class AddInput extends React.Component {
 
   // todo validation if already exists
   validate = value => {
-    if (value.trim() === '') {
+    let val = value.trim();
+
+    if (val === '') {
       return false;
     }
 
-    let extension = value.slice(-3);
+    let extension = val.slice(-3);
     return ['gif', 'jpg', 'jpeg'].includes(extension.toLowerCase());
   };
 
