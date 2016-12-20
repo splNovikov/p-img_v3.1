@@ -1,3 +1,3 @@
-import {PopupToggle} from './popup-toggle';
+import PopupToggle from './popup-toggle';
 
-export {PopupToggle};
+export default PopupToggle;

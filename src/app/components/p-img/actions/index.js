@@ -8,6 +8,13 @@ export const addImage = (path, title) => {
   };
 };
 
+export const deleteImage = (path) => {
+  return {
+    type: actionTypes.DELETE_IMAGE,
+    path
+  };
+};
+
 export const setVisibilityFilter = (filter) => {
   return {
     type: actionTypes.SET_VISIBILITY_FILTER,
@@ -15,10 +22,10 @@ export const setVisibilityFilter = (filter) => {
   };
 };
 
-export const deleteImage = (path) => {
+export const togglePopup = (isVisible) => {
   return {
-    type: actionTypes.DELETE_IMAGE,
-    path
+    type: actionTypes.TOGGLE_POPUP,
+    isVisible
   };
 };
 

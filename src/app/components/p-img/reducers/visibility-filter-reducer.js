@@ -1,9 +1,9 @@
 import {actionTypes, filterTypes} from '../constants';
 
-const visibilityFilterReducer = (state = filterTypes.SHOW_IMAGES, action) => {
-  switch (action.type) {
+const visibilityFilterReducer = (state = filterTypes.SHOW_IMAGES, payload) => {
+  switch (payload.type) {
     case actionTypes.SET_VISIBILITY_FILTER:
-      return action.filter;
+      return payload.filter;
     default:
       return state;
   }

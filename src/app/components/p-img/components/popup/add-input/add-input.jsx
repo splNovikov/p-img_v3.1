@@ -36,7 +36,7 @@ export class AddInput extends React.Component {
       <form className="add-form">
         <input type="text"
                className="add-input"
-               placeholder="Paste there link for new image..."
+               placeholder="Enter image address here..."
                value={this.state.value}
                onChange={this.handleChange}/>
         <input type="submit"
