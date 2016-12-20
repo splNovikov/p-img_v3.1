@@ -69,16 +69,19 @@ export class PImgPopup extends React.Component {
       this.setState({ isVisible });
     } else {
       let _this = this;
+
       this._setIsVisibleState.timeoutId = setTimeout(function () {
         _this.setState({ fadingOut: true });
 
         setTimeout(function () {
           _this.setState({ fadingOut: false });
           _this.setState({ isVisible });
-          // 300ms is equals css property animation-duration
-        }, 300);
+          // 250ms is equals to 300 css property animation-duration
+          // 250 is to prevent blinking in vk
+        }, 250);
 
       }, 500);
+
     }
   }
 
