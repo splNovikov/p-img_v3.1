@@ -16,8 +16,8 @@ export default class WallPost extends RootObject {
 
     // 1. Injection to button. Comment it if don't need to.
     // remove it - if you don't want to.
-    ReactDOM.render(<VkButton rootButton={this.button}
-                              rootEditable={this.editable}/>, this.button);
+    // ReactDOM.render(<VkButton rootButton={this.button}
+    //                           rootEditable={this.editable}/>, this.button);
 
     // 2. Inject to icons container
     let vkMediaIconsContainer = this.box.querySelector(this.elementType.mediaIconsContainer);
