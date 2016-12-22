@@ -25,7 +25,6 @@ export class PImg extends React.Component {
    */
   componentDidMount() {
     this.refs.pimg.addEventListener('mouseenter', this._onMouseEnter);
-    this.refs.pimg.addEventListener('mouseleave', this._onMouseLeave);
   }
 
   // -------------------------------------------------------------------------
@@ -58,11 +57,19 @@ export class PImg extends React.Component {
 
   _onMouseEnter() {
     event.stopPropagation();
+
+    this.refs.pimg.removeEventListener('mouseenter', this._onMouseEnter);
+    this.refs.pimg.addEventListener('mouseleave', this._onMouseLeave);
+
     this.props.dispatch(togglePopup(true));
   }
 
   _onMouseLeave() {
     event.stopPropagation();
+
+    this.refs.pimg.removeEventListener('mouseleave', this._onMouseLeave);
+    this.refs.pimg.addEventListener('mouseenter', this._onMouseEnter);
+
     this.props.dispatch(togglePopup(false));
   }
 
